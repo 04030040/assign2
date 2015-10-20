@@ -38,6 +38,7 @@ PImage hpImg=loadImage("img/hp.png");
 PImage enemyImg = loadImage("img/enemy.png");
 PImage treasureImg = loadImage("img/treasure.png");
 
+/*
 image (backgroundImg1, bg1PosX, 0);
 image (backgroundImg2, bg2PosX, 0);
 image(fighterimg, fighterPosX, fighterPosY);
@@ -46,6 +47,7 @@ image (treasureImg, treasurePosX, treasurePosY);
 println("hpValue=", hpValue);
 stroke(0,0,50);fill(0,0,50);
 rect(21, 15, 190, 20); //full hp == 190 hp
+*/
 
 }
 
