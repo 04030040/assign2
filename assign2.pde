@@ -49,13 +49,15 @@ rect(21, 15, 190, 20); //full hp == 190 hp
 
 }
 
+void mousePressed(){
+println("mousePressed");
+gameState=gameRun;
+}
+
 void draw (){
 switch (gameState){
 
 case gameStart:
-mousePressed();{
-gameState = gameRun;
-}
 println("gameStart");
 break;
 
