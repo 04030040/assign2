@@ -24,6 +24,8 @@ int treasureSpeedX=3;
 int fEDis=55;
 //distance between fighter and treasure
 int fTDis=45;
+//get keyboard code
+int keyCode;
 PImage backgroundImg1;
 PImage backgroundImg2;
 PImage fighterimg;
@@ -71,6 +73,30 @@ else if (gameState==gameLose){gameState=gameStart;}
 else if (gameState==gameWin){gameState=gameStart;}
 else{println("mousePressed else");}
 }
+
+
+//fighter position controlled by keyboard
+void keyPressed(KeyEvent a) {
+keyCode = a.getKeyCode();
+
+case KeyEvent.VK_UP:
+println("up");
+break;
+
+case KeyEvent.VK_LEFT:
+System.out.println("left");
+break;
+
+case KeyEvent.VK_DOWN:
+System.out.println("down");
+break;
+
+case KeyEvent.VK_RIGHT:
+System.out.println("right");
+break;
+
+}
+
 
 void draw (){
 switch (gameState){
@@ -126,6 +152,15 @@ fighterPosY=height;
 }
 
 image(fighterimg, fighterPosX, fighterPosY);
+
+/*
+//fighter position controlled by keyboard
+
+
+
+
+*/
+
 
 // hp value
 println("hpValue=", hpValue);
