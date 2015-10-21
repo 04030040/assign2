@@ -74,7 +74,7 @@ else if (gameState==gameWin){gameState=gameStart;}
 else{println("mousePressed else");}
 }
 
-
+/*
 //fighter position controlled by keyboard
 void keyPressed(KeyEvent a) {
 keyCode = a.getKeyCode();
@@ -84,19 +84,18 @@ println("up");
 break;
 
 case KeyEvent.VK_LEFT:
-System.out.println("left");
+println("left");
 break;
 
 case KeyEvent.VK_DOWN:
-System.out.println("down");
+println("down");
 break;
 
 case KeyEvent.VK_RIGHT:
-System.out.println("right");
+println("right");
 break;
-
 }
-
+*/
 
 void draw (){
 switch (gameState){
