@@ -77,7 +77,7 @@ else if (gameState==gameWin){gameState=gameStart;}
 else{println("mousePressed else");}
 }
 
-/*
+
 //fighter position controlled by keyboard
 void keyPressed() {
 if (key == CODED) {
@@ -116,7 +116,7 @@ break;
 }
 }
 }
-*/
+
 
 void draw (){
 switch (gameState){
