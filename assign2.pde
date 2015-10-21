@@ -59,9 +59,9 @@ rect(21, 15, 190, 20); //full hp == 190 hp
 
 void mousePressed(){
 println("mousePressed");
-if (gameState=gameStart){gameState=gameRun;}
-if (gameState=gameLose){gameState=gameStart;}
-if (gameState=gameWin){gameState=gameStart;}
+if (gameState=gameStart){gameState=gameRun;break;}
+if (gameState=gameLose){gameState=gameStart;break;}
+if (gameState=gameWin){gameState=gameStart;break;}
 }
 
 void draw (){
