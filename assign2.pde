@@ -1,12 +1,11 @@
 //You should implement your assign2 here.
 
+//game state case number
 final int gameStart=1, gameWin=2, gameLose=3, gameRun=4;
 int gameState=0;
 
 //fighter hp value
 int hpValue=20;
-//int hpValue=floor(random(101)); 
-//int hpValue=20;
 int treasurePosX;
 int treasurePosY;
 int enemy1PosX=0;
@@ -21,6 +20,7 @@ int bg2PosX=-641;
 int enemySpeedX=2;
 int enemySpeedY=2;
 int treasureSpeedX=3;
+
 //distance between fighter and enemy
 int fEDis=55;
 //distance between fighter and treasure
@@ -45,8 +45,6 @@ void setup(){
 size (640, 480);
 gameState=gameStart;
 
-
-
 backgroundImg1=loadImage("img/bg1.png");
 backgroundImg2=loadImage("img/bg2.png");
 fighterimg = loadImage("img/fighter.png");
@@ -57,17 +55,6 @@ startImg1 = loadImage("img/start1.png");
 startImg2 = loadImage("img/start2.png");
 endImg1 = loadImage("img/end1.png");
 endImg2 = loadImage("img/end2.png");
-
-/*
-image (backgroundImg1, bg1PosX, 0);
-image (backgroundImg2, bg2PosX, 0);
-image(fighterimg, fighterPosX, fighterPosY);
-image(hpImg,10,10);
-image (treasureImg, treasurePosX, treasurePosY);
-println("hpValue=", hpValue);
-stroke(0,0,50);fill(0,0,50);
-rect(21, 15, 190, 20); //full hp == 190 hp
-*/
 
 }
 
