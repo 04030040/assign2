@@ -31,12 +31,12 @@ void setup(){
 size (640, 480);
 gameState=gameStart;
 
-PImage backgroundImg1=loadImage("img/bg1.png");
-PImage backgroundImg2=loadImage("img/bg2.png");
-PImage fighterimg = loadImage("img/fighter.png");
-PImage hpImg=loadImage("img/hp.png");
-PImage enemyImg = loadImage("img/enemy.png");
-PImage treasureImg = loadImage("img/treasure.png");
+backgroundImg1=loadImage("img/bg1.png");
+backgroundImg2=loadImage("img/bg2.png");
+fighterimg = loadImage("img/fighter.png");
+hpImg=loadImage("img/hp.png");
+enemyImg = loadImage("img/enemy.png");
+treasureImg = loadImage("img/treasure.png");
 
 /*
 image (backgroundImg1, bg1PosX, 0);
