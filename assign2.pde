@@ -86,6 +86,7 @@ fill (fillColor);
 break;
 
 case gameRun:
+hpValue=100;
 println("gameRun");
 // background run
 image (backgroundImg1, bg1PosX++, 0);
