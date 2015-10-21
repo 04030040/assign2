@@ -17,8 +17,8 @@ int bg1PosX=0;
 // int bg1PosY=0;
 int bg2PosX=-641;
 // int bg2PosY=0;
-int enemySpeedX=20;
-int enemySpeedY=20;
+int enemySpeedX=2;
+int enemySpeedY=2;
 int treasureSpeedX=10;
 PImage backgroundImg1;
 PImage backgroundImg2;
@@ -26,6 +26,10 @@ PImage fighterimg;
 PImage hpImg;
 PImage enemyImg;
 PImage treasureImg;
+PImage startImg1;
+PImage startImg2;
+
+
 
 void setup(){
 size (640, 480);
@@ -37,6 +41,8 @@ fighterimg = loadImage("img/fighter.png");
 hpImg=loadImage("img/hp.png");
 enemyImg = loadImage("img/enemy.png");
 treasureImg = loadImage("img/treasure.png");
+startImg1 = loadImage("img/start1.png");
+startImg2 = loadImage("img/start2.png");
 
 /*
 image (backgroundImg1, bg1PosX, 0);
@@ -53,7 +59,9 @@ rect(21, 15, 190, 20); //full hp == 190 hp
 
 void mousePressed(){
 println("mousePressed");
-gameState=gameRun;
+if (gameState=gameStart){gameState=gameRun;}
+if (gameState=gameLose){gameState=gameStart;}
+if (gameState=gameWin){gameState=gameStart;}
 }
 
 void draw (){
@@ -61,6 +69,7 @@ switch (gameState){
 
 case gameStart:
 println("gameStart");
+image (startImg1, 0, 0);
 break;
 
 case gameWin:
