@@ -196,11 +196,15 @@ println("fighterPosX=", fighterPosX);
 println("fighterPosY=", fighterPosY);
 
 // hp value
+stroke(0,0,50);fill(0,0,50);
+rect(21, 15, 190, 20); //full hp == 190 point
 println("hpValue=", hpValue);
 stroke(0,0,200);fill(0,0,200);
 if (hpValue<40){stroke(250,20,20);fill(250,20,20);}
-rect(21, 15, hpValue*1.9, 20); //full hp == 190
+if(hpValue>0){
+rect(21, 15, hpValue*1.9, 20); //full hp == 190 point
 image(hpImg,10,10);
+}
 
 // enemy position
 if (enemy1PosX>width){
