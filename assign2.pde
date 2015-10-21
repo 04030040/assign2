@@ -84,15 +84,19 @@ if (key == CODED) {
 switch (keyCode) {
 case UP:
 up = true;
+println("up");
 break;
 case DOWN:
 down = true;
+println("down");
 break;
 case LEFT:
 left = true;
+println("left");
 break;
 case RIGHT:
 right = true;
+println("right");
 break;
 }
 }
