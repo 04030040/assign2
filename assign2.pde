@@ -19,11 +19,11 @@ int bg2PosX=-641;
 // int bg2PosY=0;
 int enemySpeedX=2;
 int enemySpeedY=2;
-int treasureSpeedX=10;
+int treasureSpeedX=3;
 //distance between fighter and enemy
-int fEDis=57;
+int fEDis=55;
 //distance between fighter and treasure
-int fTDis=47;
+int fTDis=45;
 PImage backgroundImg1;
 PImage backgroundImg2;
 PImage fighterimg;
@@ -128,11 +128,11 @@ fighterPosY=height;
 image(fighterimg, fighterPosX, fighterPosY);
 
 // hp value
-image(hpImg,10,10);
 println("hpValue=", hpValue);
 stroke(0,0,200);fill(0,0,200);
 if (hpValue<40){stroke(250,20,20);fill(250,20,20);}
 rect(21, 15, hpValue*1.9, 20); //full hp == 190
+image(hpImg,10,10);
 
 // enemy position
 if (enemy1PosX>width){
@@ -157,6 +157,11 @@ hpValue-=20;
 }
 image (enemyImg, enemy1PosX, enemy1PosY);
 
+//hp value <=0
+if (hpValue<=0){
+gameState=gameLose;
+}
+
 //treasure position
 //if (fighterPosX-treasurePosX>fTDis){
 treasurePosX+=treasureSpeedX;
@@ -170,10 +175,7 @@ if (hpValue>100){hpValue=100;}
 image (treasureImg, treasurePosX, treasurePosY);
 if (treasurePosX>640){treasurePosX=0;}
 
-//hp value <=0
-if (hpValue<=0){
-gameState=gameLose;
-}
+
 
 
 
