@@ -20,6 +20,10 @@ int bg2PosX=-641;
 int enemySpeedX=2;
 int enemySpeedY=2;
 int treasureSpeedX=10;
+//distance between fighter and enemy
+int fEDis=57;
+//distance between fighter and treasure
+int fTDis=47;
 PImage backgroundImg1;
 PImage backgroundImg2;
 PImage fighterimg;
@@ -30,6 +34,7 @@ PImage startImg1;
 PImage startImg2;
 PImage endImg1;
 PImage endImg2;
+
 
 void setup(){
 size (640, 480);
@@ -133,19 +138,19 @@ rect(21, 15, hpValue*1.9, 20); //full hp == 190
 if (enemy1PosX>width){
 enemy1PosX=0;
 }
-if (fighterPosX-enemy1PosX>20){
+if (fighterPosX-enemy1PosX>fEDis){
 enemy1PosX+=enemySpeedX;
 }
 if (fighterPosX-enemy1PosX<0){
 enemy1PosX+=enemySpeedX;
 }
-if (fighterPosY-enemy1PosY>20){
+if (fighterPosY-enemy1PosY>fEDis){
 enemy1PosY+=enemySpeedY;
 }
-if (enemy1PosY-fighterPosY>20){
+if (enemy1PosY-fighterPosY>fEDis){
 enemy1PosY-=enemySpeedY;
 }
-if ((Math.abs(fighterPosX-enemy1PosX)<20)&&Math.abs(fighterPosY-enemy1PosY)<20){
+if ((Math.abs(fighterPosX-enemy1PosX)<=fEDis)&&Math.abs(fighterPosY-enemy1PosY)<=fEDis){
 enemy1PosX=0;
 enemy1PosY=floor(random(height-90))+50;
 hpValue-=20;
@@ -153,10 +158,10 @@ hpValue-=20;
 image (enemyImg, enemy1PosX, enemy1PosY);
 
 //treasure position
-//if (fighterPosX-treasurePosX>20){
+//if (fighterPosX-treasurePosX>fTDis){
 treasurePosX+=treasureSpeedX;
 //}
-if ((Math.abs(fighterPosX-treasurePosX)<20)&&Math.abs(fighterPosY-treasurePosY)<20){
+if ((Math.abs(fighterPosX-treasurePosX)<fTDis)&&Math.abs(fighterPosY-treasurePosY)<fTDis){
 treasurePosX=floor(random(width-90))+50;
 treasurePosY=floor(random(height-90))+50;
 hpValue+=10;
