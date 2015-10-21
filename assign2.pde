@@ -20,6 +20,23 @@ int enemySpeedX=2;
 int enemySpeedY=2;
 int treasureSpeedX=3;
 
+// start Button Left Boarder X position 
+int strtBnLftBrdrX=206;
+// start Button Right Boarder X position 
+int strtBnRtBrdrX=444;
+// start Button Upper Boarder Y position 
+int strtBnUpBrdrY=376;
+// start Button Lower Boarder Y position 
+int strtBnLwBrdrY=413;
+// end Button Left Boarder X position 
+int endBnLftBrdrX=209;
+// end Button Right Boarder X position 
+int endBnRtBrdrX=422;
+// end Button Upper Boarder Y position 
+int endBnUpBrdrY=310;
+// end Button Lower Boarder Y position 
+int endBnLwBrdrY=346;
+
 //distance between fighter and enemy
 int fEDis=55;
 //distance between fighter and treasure
@@ -59,8 +76,19 @@ endImg2 = loadImage("img/end2.png");
 
 void mousePressed(){
 println("mousePressed");
-if (gameState==gameStart){gameState=gameRun;hpValue=20;}
-else if (gameState==gameLose){gameState=gameStart;}
+println("mouseX, Y =", mouseX, ", ", mouseY);
+if (gameState==gameStart &&
+// start Button
+mouseX>strtBnLftBrdrX&&mouseX<strtBnRtBrdrX&&mouseY>strtBnUpBrdrY&&mouseY<strtBnLwBrdrY){
+gameState=gameRun;
+hpValue=20;
+}
+else if (gameState==gameLose &&
+//end Button
+mouseX>endBnLftBrdrX&&mouseX<endBnRtBrdrX&&mouseY>endBnUpBrdrY&&mouseY<endBnLwBrdrY
+){
+gameState=gameStart;
+}
 else if (gameState==gameWin){gameState=gameStart;}
 else{println("mousePressed else");}
 }
@@ -115,7 +143,6 @@ switch (gameState){
 
 case gameStart:
 println("gameStart");
-image (startImg1, 0, 0);
 treasurePosX=floor(random(width-90))+50;
 treasurePosY=floor(random(height-90))+50;
 enemy1PosX=0;
@@ -123,13 +150,27 @@ enemy1PosY=floor(random(height-90))+50;
 fighterPosX=floor(random(width-90))+50;
 fighterPosY=floor(random(height-90))+50;
 hpValue=20;
+//start Button
+if (mouseX>strtBnLftBrdrX&&mouseX<strtBnRtBrdrX&&mouseY>strtBnUpBrdrY&&mouseY<strtBnLwBrdrY){
+image (startImg1, 0, 0);
+}
+else {
+image (startImg2, 0, 0);
+}
 break;
 
 case gameWin:
 println("gameWin");
 break;
 case gameLose:
+// end Button
+if (mouseX>endBnLftBrdrX&&mouseX<endBnRtBrdrX&&mouseY>endBnUpBrdrY&&mouseY<endBnLwBrdrY){
 image (endImg1, 0, 0);
+}
+else{
+image (endImg2, 0, 0);
+}
+
 println("gameLose");
 
 break;
@@ -185,39 +226,40 @@ if (hpValue<40){stroke(250,20,20);fill(250,20,20);}
 if(hpValue>0){
 rect(21, 15, hpValue*1.9, 20); //full hp == 190 point
 }
-image(hpImg,10,10)
+image(hpImg,10,10);
 //hp value <=0
 if (hpValue<=0){
 gameState=gameLose;
 }
 
 // enemy
+//enemy fighter contact
+if ((Math.abs(fighterPosX-enemy1PosX)<=fEDis)&&Math.abs(fighterPosY-enemy1PosY)<=fEDis){
+enemy1PosX=0;
+enemy1PosY=floor(random(height-90))+50;
+hpValue-=20;
+}
 if (enemy1PosX>width){
 enemy1PosX=0;
 }
 if (fighterPosX-enemy1PosX>fEDis){
 enemy1PosX+=enemySpeedX;
 }
-if (fighterPosX-enemy1PosX<0){
+if (enemy1PosX-fighterPosX>fEDis){
 enemy1PosX+=enemySpeedX;
 }
-if (fighterPosY-enemy1PosY>fEDis){
+if (fighterPosY-enemy1PosY>0){
 enemy1PosY+=enemySpeedY;
 }
-if (enemy1PosY-fighterPosY>fEDis){
+if (enemy1PosY-fighterPosY>0){
 enemy1PosY-=enemySpeedY;
-}
-if ((Math.abs(fighterPosX-enemy1PosX)<=fEDis)&&Math.abs(fighterPosY-enemy1PosY)<=fEDis){
-enemy1PosX=0;
-enemy1PosY=floor(random(height-90))+50;
-hpValue-=20;
 }
 image (enemyImg, enemy1PosX, enemy1PosY);
 
 
 //treasure
-treasurePosX+=treasureSpeedX;
-
+//treasurePosX+=treasureSpeedX;
+//enemy fighter contact
 if ((Math.abs(fighterPosX-treasurePosX)<fTDis)&&Math.abs(fighterPosY-treasurePosY)<fTDis){
 treasurePosX=floor(random(width-90))+50;
 treasurePosY=floor(random(height-90))+50;
