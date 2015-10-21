@@ -1,5 +1,7 @@
 //You should implement your assign2 here.
 
+//You should implement your assign2 here.
+
 final int gameStart=1, gameWin=2, gameLose=3, gameRun=4;
 int gameState=0;
 
@@ -7,12 +9,14 @@ int gameState=0;
 int hpValue=20;
 //int hpValue=floor(random(101)); 
 //int hpValue=20;
-int treasurePosX=floor(random(width-90))+50;
-int treasurePosY=floor(random(height-90))+50;
+int treasurePosX;
+int treasurePosY;
 int enemy1PosX=0;
-int enemy1PosY=floor(random(height-90))+50;
-int fighterPosX=floor(random(width-90))+50;
-int fighterPosY=floor(random(height-90))+50;
+int enemy1PosY;
+int fighterPosX;
+int fighterPosY;
+
+
 int bg1PosX=0;
 // int bg1PosY=0;
 int bg2PosX=-641;
@@ -44,6 +48,13 @@ boolean rightPressed = false;
 void setup(){
 size (640, 480);
 gameState=gameStart;
+
+treasurePosX=floor(random(width-90))+50;
+treasurePosY=floor(random(height-90))+50;
+enemy1PosX=0;
+enemy1PosY=floor(random(height-90))+50;
+fighterPosX=floor(random(width-90))+50;
+fighterPosY=floor(random(height-90))+50;
 
 backgroundImg1=loadImage("img/bg1.png");
 backgroundImg2=loadImage("img/bg2.png");
@@ -184,7 +195,8 @@ if(downPressed==true){fighterPosY+=3;}
 if(leftPressed==true){fighterPosX-=3;}
 if(rightPressed==true){fighterPosY+=3;}
 image(fighterimg, fighterPosX, fighterPosY);
-
+println("fighterPosX=", fighterPosX);
+println("fighterPosY=", fighterPosY);
 
 // hp value
 println("hpValue=", hpValue);
