@@ -162,6 +162,7 @@ break;
 case gameWin:
 println("gameWin");
 break;
+
 case gameLose:
 // end Button
 if (mouseX>endBnLftBrdrX&&mouseX<endBnRtBrdrX&&mouseY>endBnUpBrdrY&&mouseY<endBnLwBrdrY){
@@ -170,9 +171,7 @@ image (endImg1, 0, 0);
 else{
 image (endImg2, 0, 0);
 }
-
 println("gameLose");
-
 break;
 
 case gameRun:
