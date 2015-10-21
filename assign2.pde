@@ -61,7 +61,7 @@ rect(21, 15, 190, 20); //full hp == 190 hp
 
 void mousePressed(){
 println("mousePressed");
-if (gameState==gameStart){gameState=gameRun;}
+if (gameState==gameStart){gameState=gameRun;hpValue=100;}
 else if (gameState==gameLose){gameState=gameStart;}
 else if (gameState==gameWin){gameState=gameStart;}
 else{println("mousePressed else");}
@@ -90,7 +90,6 @@ fill (fillColor);
 break;
 
 case gameRun:
-hpValue=100;
 println("gameRun");
 // background run
 image (backgroundImg1, bg1PosX++, 0);
@@ -163,6 +162,7 @@ treasurePosY=floor(random(height-90))+50;
 hpValue+=10;
 }
 image (treasureImg, treasurePosX, treasurePosY);
+if (treasurePosX>640){treasurePosX=0;}
 
 //hp value <=0
 if (hpValue<=0){
