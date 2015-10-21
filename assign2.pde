@@ -4,8 +4,7 @@
 final int gameStart=1, gameWin=2, gameLose=3, gameRun=4;
 int gameState=0;
 
-//fighter hp value
-int hpValue=20;
+int hpValue;
 int treasurePosX;
 int treasurePosY;
 int enemy1PosX=0;
@@ -123,20 +122,16 @@ enemy1PosX=0;
 enemy1PosY=floor(random(height-90))+50;
 fighterPosX=floor(random(width-90))+50;
 fighterPosY=floor(random(height-90))+50;
+hpValue=20;
 break;
 
 case gameWin:
-println("gameStart");
+println("gameWin");
 break;
 case gameLose:
 image (endImg1, 0, 0);
 println("gameLose");
 
-// canvas gray to black
-noStroke();
-for (int fillColor=100; fillColor <255; fillColor+=10){
-fill (fillColor);
-}
 break;
 
 case gameRun:
@@ -149,7 +144,6 @@ if (bg2PosX>641){bg2PosX=-640;}
 
 /*
 // figher position = mouse position
-
 if (mouseX>=0 && mouseX<=width){
 fighterPosX=mouseX;
 }
@@ -159,7 +153,6 @@ fighterPosX=0;
 else {
 fighterPosX=width;
 }
-
 if (mouseY>=0 && mouseY<=height){
 fighterPosY=mouseY;
 }
@@ -169,7 +162,6 @@ fighterPosY=0;
 else{
 fighterPosY=height;
 }
-
 image(fighterimg, fighterPosX, fighterPosY);
 */
 
@@ -182,18 +174,24 @@ image(fighterimg, fighterPosX, fighterPosY);
 println("fighterPosX=", fighterPosX);
 println("fighterPosY=", fighterPosY);
 
-// hp value
+// hp
+// hp background
 stroke(0,0,50);fill(0,0,50);
 rect(21, 15, 190, 20); //full hp == 190 point
+// hp itself
 println("hpValue=", hpValue);
 stroke(0,0,200);fill(0,0,200);
 if (hpValue<40){stroke(250,20,20);fill(250,20,20);}
 if(hpValue>0){
 rect(21, 15, hpValue*1.9, 20); //full hp == 190 point
-image(hpImg,10,10);
+}
+image(hpImg,10,10)
+//hp value <=0
+if (hpValue<=0){
+gameState=gameLose;
 }
 
-// enemy position
+// enemy
 if (enemy1PosX>width){
 enemy1PosX=0;
 }
@@ -216,15 +214,10 @@ hpValue-=20;
 }
 image (enemyImg, enemy1PosX, enemy1PosY);
 
-//hp value <=0
-if (hpValue<=0){
-gameState=gameLose;
-}
 
-//treasure position
-//if (fighterPosX-treasurePosX>fTDis){
+//treasure
 treasurePosX+=treasureSpeedX;
-//}
+
 if ((Math.abs(fighterPosX-treasurePosX)<fTDis)&&Math.abs(fighterPosY-treasurePosY)<fTDis){
 treasurePosX=floor(random(width-90))+50;
 treasurePosY=floor(random(height-90))+50;
@@ -233,11 +226,6 @@ if (hpValue>100){hpValue=100;}
 }
 image (treasureImg, treasurePosX, treasurePosY);
 if (treasurePosX>640){treasurePosX=0;}
-
-
-
-
-
 
 break;
 
