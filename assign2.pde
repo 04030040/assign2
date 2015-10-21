@@ -183,7 +183,7 @@ if(upPressed==true){fighterPosY-=3;}
 if(downPressed==true){fighterPosY+=3;}
 if(leftPressed==true){fighterPosX-=3;}
 if(rightPressed==true){fighterPosY+=3;}
-
+image(fighterimg, fighterPosX, fighterPosY);
 
 
 // hp value
