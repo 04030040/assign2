@@ -4,7 +4,7 @@ final int gameStart=1, gameWin=2, gameLose=3, gameRun=4;
 int gameState=0;
 
 //fighter hp value
-int hpValue=100;
+int hpValue=20;
 //int hpValue=floor(random(101)); 
 //int hpValue=20;
 int treasurePosX=floor(random(width-90))+50;
@@ -36,7 +36,10 @@ PImage startImg1;
 PImage startImg2;
 PImage endImg1;
 PImage endImg2;
-
+boolean up = false;
+boolean down = false;
+boolean left = false;
+boolean right = false;
 
 void setup(){
 size (640, 480);
@@ -68,7 +71,7 @@ rect(21, 15, 190, 20); //full hp == 190 hp
 
 void mousePressed(){
 println("mousePressed");
-if (gameState==gameStart){gameState=gameRun;hpValue=100;}
+if (gameState==gameStart){gameState=gameRun;hpValue=20;}
 else if (gameState==gameLose){gameState=gameStart;}
 else if (gameState==gameWin){gameState=gameStart;}
 else{println("mousePressed else");}
@@ -76,24 +79,42 @@ else{println("mousePressed else");}
 
 /*
 //fighter position controlled by keyboard
-void keyPressed(KeyEvent a) {
-keyCode = a.getKeyCode();
-
-case KeyEvent.VK_UP:
-println("up");
+void keyPressed() {
+if (key == CODED) {
+switch (keyCode) {
+case UP:
+up = true;
 break;
-
-case KeyEvent.VK_LEFT:
-println("left");
+case DOWN:
+down = true;
 break;
-
-case KeyEvent.VK_DOWN:
-println("down");
+case LEFT:
+left = true;
 break;
-
-case KeyEvent.VK_RIGHT:
-println("right");
+case RIGHT:
+right = true;
 break;
+}
+}
+}
+
+void keyReleased() {
+if (key == CODED) {
+switch (keyCode) {
+case UP:
+up = false;
+break;
+case DOWN:
+down = false;
+break;
+case LEFT:
+left = false;
+break;
+case RIGHT:
+right = false;
+break;
+}
+}
 }
 */
 
