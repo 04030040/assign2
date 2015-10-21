@@ -153,13 +153,14 @@ hpValue-=20;
 image (enemyImg, enemy1PosX, enemy1PosY);
 
 //treasure position
-if (fighterPosX-treasurePosX>20){
+//if (fighterPosX-treasurePosX>20){
 treasurePosX+=treasureSpeedX;
-}
+//}
 if ((Math.abs(fighterPosX-treasurePosX)<20)&&Math.abs(fighterPosY-treasurePosY)<20){
 treasurePosX=floor(random(width-90))+50;
 treasurePosY=floor(random(height-90))+50;
 hpValue+=10;
+if (hpValue>100){hpValue=100;}
 }
 image (treasureImg, treasurePosX, treasurePosY);
 if (treasurePosX>640){treasurePosX=0;}
@@ -168,10 +169,6 @@ if (treasurePosX>640){treasurePosX=0;}
 if (hpValue<=0){
 gameState=gameLose;
 }
-
-
-
-
 
 
 
