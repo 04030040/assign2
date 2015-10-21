@@ -36,10 +36,10 @@ PImage startImg1;
 PImage startImg2;
 PImage endImg1;
 PImage endImg2;
-boolean up = false;
-boolean down = false;
-boolean left = false;
-boolean right = false;
+boolean upPressed = false;
+boolean downPressed = false;
+boolean leftPressed = false;
+boolean rightPressed = false;
 
 void setup(){
 size (640, 480);
@@ -83,20 +83,20 @@ void keyPressed() {
 if (key == CODED) {
 switch (keyCode) {
 case UP:
-up = true;
-println("up");
+upPressed = true;
+println("upPressed");
 break;
 case DOWN:
-down = true;
-println("down");
+downPressed = true;
+println("downPressed");
 break;
 case LEFT:
-left = true;
-println("left");
+leftPressed = true;
+println("leftPressed");
 break;
 case RIGHT:
-right = true;
-println("right");
+rightPressed = true;
+println("rightPressed");
 break;
 }
 }
@@ -106,16 +106,16 @@ void keyReleased() {
 if (key == CODED) {
 switch (keyCode) {
 case UP:
-up = false;
+upPressed = false;
 break;
 case DOWN:
-down = false;
+downPressed = false;
 break;
 case LEFT:
-left = false;
+leftPressed = false;
 break;
 case RIGHT:
-right = false;
+rightPressed = false;
 break;
 }
 }
@@ -152,7 +152,7 @@ image (backgroundImg2, bg2PosX++, 0);
 if (bg1PosX>641){bg1PosX=-640;};
 if (bg2PosX>641){bg2PosX=-640;};
 
-
+/*
 // figher position = mouse position
 
 if (mouseX>=0 && mouseX<=width){
@@ -176,14 +176,14 @@ fighterPosY=height;
 }
 
 image(fighterimg, fighterPosX, fighterPosY);
-
-/*
-//fighter position controlled by keyboard
-
-
-
-
 */
+
+//fighter position controlled by keyboard
+if(upPressed==true){fighterPosY-=3;}
+if(downPressed==true){fighterPosY+=3;}
+if(leftPressed==true){fighterPosX-=3;}
+if(rightPressed==true){fighterPosY+=3;}
+
 
 
 // hp value
