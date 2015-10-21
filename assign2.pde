@@ -28,8 +28,8 @@ PImage enemyImg;
 PImage treasureImg;
 PImage startImg1;
 PImage startImg2;
-
-
+PImage endImg1;
+PImage endImg2;
 
 void setup(){
 size (640, 480);
@@ -43,6 +43,8 @@ enemyImg = loadImage("img/enemy.png");
 treasureImg = loadImage("img/treasure.png");
 startImg1 = loadImage("img/start1.png");
 startImg2 = loadImage("img/start2.png");
+endImg1 = loadImage("img/end1.png");
+endImg2 = loadImage("img/end2.png");
 
 /*
 image (backgroundImg1, bg1PosX, 0);
@@ -59,9 +61,10 @@ rect(21, 15, 190, 20); //full hp == 190 hp
 
 void mousePressed(){
 println("mousePressed");
-if (gameState==gameStart){gameState=gameRun;break;}
-else if (gameState==gameLose){gameState=gameStart;break;}
-else if (gameState==gameWin){gameState=gameStart;break;}
+if (gameState==gameStart){gameState=gameRun;}
+else if (gameState==gameLose){gameState=gameStart;}
+else if (gameState==gameWin){gameState=gameStart;}
+else{println("mousePressed else");}
 }
 
 void draw (){
@@ -76,6 +79,7 @@ case gameWin:
 println("gameStart");
 break;
 case gameLose:
+image (endImg1, 0, 0);
 println("gameLose");
 
 // canvas gray to black
