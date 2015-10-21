@@ -1,7 +1,5 @@
 //You should implement your assign2 here.
 
-//You should implement your assign2 here.
-
 final int gameStart=1, gameWin=2, gameLose=3, gameRun=4;
 int gameState=0;
 
@@ -16,7 +14,6 @@ int enemy1PosY;
 int fighterPosX;
 int fighterPosY;
 
-
 int bg1PosX=0;
 // int bg1PosY=0;
 int bg2PosX=-641;
@@ -28,8 +25,7 @@ int treasureSpeedX=3;
 int fEDis=55;
 //distance between fighter and treasure
 int fTDis=45;
-//get keyboard code
-int keyCode;
+
 PImage backgroundImg1;
 PImage backgroundImg2;
 PImage fighterimg;
@@ -49,12 +45,7 @@ void setup(){
 size (640, 480);
 gameState=gameStart;
 
-treasurePosX=floor(random(width-90))+50;
-treasurePosY=floor(random(height-90))+50;
-enemy1PosX=0;
-enemy1PosY=floor(random(height-90))+50;
-fighterPosX=floor(random(width-90))+50;
-fighterPosY=floor(random(height-90))+50;
+
 
 backgroundImg1=loadImage("img/bg1.png");
 backgroundImg2=loadImage("img/bg2.png");
@@ -139,6 +130,12 @@ switch (gameState){
 case gameStart:
 println("gameStart");
 image (startImg1, 0, 0);
+treasurePosX=floor(random(width-90))+50;
+treasurePosY=floor(random(height-90))+50;
+enemy1PosX=0;
+enemy1PosY=floor(random(height-90))+50;
+fighterPosX=floor(random(width-90))+50;
+fighterPosY=floor(random(height-90))+50;
 break;
 
 case gameWin:
@@ -160,8 +157,8 @@ println("gameRun");
 // background run
 image (backgroundImg1, bg1PosX++, 0);
 image (backgroundImg2, bg2PosX++, 0);
-if (bg1PosX>641){bg1PosX=-640;};
-if (bg2PosX>641){bg2PosX=-640;};
+if (bg1PosX>641){bg1PosX=-640;}
+if (bg2PosX>641){bg2PosX=-640;}
 
 /*
 // figher position = mouse position
@@ -190,10 +187,10 @@ image(fighterimg, fighterPosX, fighterPosY);
 */
 
 //fighter position controlled by keyboard
-if(upPressed==true){fighterPosY-=3;}
-if(downPressed==true){fighterPosY+=3;}
-if(leftPressed==true){fighterPosX-=3;}
-if(rightPressed==true){fighterPosY+=3;}
+if(upPressed==true && fighterPosY-3>0){fighterPosY-=3;}
+if(downPressed==true&&fighterPosY+3<height-51){fighterPosY+=3;}
+if(leftPressed==true&&fighterPosX-3>0){fighterPosX-=3;}
+if(rightPressed==true&&fighterPosX+3<width-51){fighterPosX+=3;}
 image(fighterimg, fighterPosX, fighterPosY);
 println("fighterPosX=", fighterPosX);
 println("fighterPosY=", fighterPosY);
